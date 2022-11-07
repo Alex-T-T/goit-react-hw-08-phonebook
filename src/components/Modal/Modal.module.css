@@ -1,0 +1,44 @@
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1200;
+}
+
+.Modal {
+    position: relative;
+    padding: 30px;
+    max-width: calc(100vw - 248px);
+    max-height: calc(100vh - 24px);
+    background-color: darkcyan;
+}
+
+.closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    background-color: inherit;
+}
+
+/* .closeBtn:hover {
+    transform: scale(1.1);
+} */
+
+.closeBtnIcon {
+    vertical-align: middle; 
+    width: 20px; 
+    height: 20px;
+
+}
+
+.closeBtnIcon:hover {
+    transform: scale(1.1);
+    fill: rgba(116, 21, 21, 0.8);
+}

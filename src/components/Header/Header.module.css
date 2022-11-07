@@ -1,0 +1,28 @@
+.phonebookHeader {
+    padding: 30px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: bold;
+    color: #061700;
+}
+
+.buttons > button {
+            background: linear-gradient(to right, #52c234, #061700);
+            border-radius: 4px;
+}
+
+.buttons>button:hover {
+    transform: scale(1.1);
+}
+

@@ -1,16 +1,35 @@
+import { Form } from './Form/Form';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
+import { Header } from './Header/Header';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import  userAuthOperations  from '../redux/userAuth/userAuth-operations';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+
 export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userAuthOperations.getCurrentUser())
+    }, [dispatch]);
+
+        return(
+            <>
+                <Header/>
+
+                <Form />   
+        
+                <Filter />
+
+                <ContactList />
+
+                <ToastContainer position="top-right"
+                                autoClose={3000}
+                                theme="dark"/>
+        </>
+    )
+}
+
