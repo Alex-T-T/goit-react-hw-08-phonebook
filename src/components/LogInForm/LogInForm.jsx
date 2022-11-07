@@ -2,12 +2,14 @@ import css from "../LogInForm/LogInForm.module.css"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import userAuthOperations from "redux/userAuth/userAuth-operations";
+import { useNavigate} from "react-router-dom";
 // import { toast } from "react-toastify";
 // import { useLoginUserMutation } from "redux/userSlice";
 
 
 export const LogInForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [token, setToken] = useState('');
@@ -35,6 +37,7 @@ const handleInputChange = (event) => {
         const user = { email, password }
         dispatch(userAuthOperations.userLogin(user))
         reset();
+        navigate('/contacts');
     }
 
     const reset = () => {
@@ -48,20 +51,25 @@ const handleInputChange = (event) => {
 
             <label> Email
                 <input type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleInputChange}
+                        name="email"
+                        value={email}
+                        onChange={handleInputChange}
                         required 
                     />
             </label>
 
             <label> Password
-                <input type="password" name="password" value={password}
-                    onChange={handleInputChange}
-                    required/>
+                    <input type="password"
+                            name="password"
+                            value={password}
+                            onChange={handleInputChange}
+                            required/>
             </label>
-
-            <button type="submit" onClick={handleInputSubmit}>LogIn</button>
+                    <button className={css.loginBtn}
+                        type="submit"
+                        onClick={handleInputSubmit}>
+                        Login
+                    </button>
 
             </form>
             {/* {result.isSuccess && <><div>{result.data.user.email }</div> <div>token{token}</div></>} */}

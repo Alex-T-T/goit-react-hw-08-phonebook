@@ -1,12 +1,12 @@
 import { useState } from "react";
 import css from "../RegistrationForm/RegistrationForm.module.css";
-// import { useCreateNewUserMutation } from "redux/userSlice";
-// import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import userAuthOperations from '../../redux/userAuth/userAuth-operations';
+import {useNavigate} from 'react-router-dom'
 
 export const RegistrationForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,8 +37,8 @@ export const RegistrationForm = () => {
         event.preventDefault();
         console.log({ name, email, password });
         dispatch(userAuthOperations.userRegistration({ name, email, password }));
-
         reset();
+        navigate('/contacts');
     }
 
     const reset = () => {

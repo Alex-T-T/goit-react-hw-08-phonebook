@@ -1,12 +1,12 @@
-import { Form } from './Form/Form';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { Header } from './Header/Header';
-import { ToastContainer } from 'react-toastify';
+import { Layout } from './Layout/Layout';
 import 'react-toastify/dist/ReactToastify.css';
 import  userAuthOperations  from '../redux/userAuth/userAuth-operations';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Route, Routes, Navigate } from "react-router-dom";
+import { RegistrationForm } from './RegistrationForm/RegistrationForm';
+import { LogInForm } from './LogInForm/LogInForm';
+import { Contacts } from 'Contacts/Contacts';
 
 
 export const App = () => {
@@ -18,18 +18,19 @@ export const App = () => {
 
         return(
             <>
-                <Header/>
+                <Routes>
+                    <Route path='/' element={<Layout/>}>
 
-                <Form />   
-        
-                <Filter />
+                        <Route path='register' element={<RegistrationForm />} />
+                        
+                        <Route path='login' element={ <LogInForm/>} />
 
-                <ContactList />
+                        <Route path='contacts' element={ <Contacts/>  } />  
+                        
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Route>
+                </Routes>
 
-                <ToastContainer position="top-right"
-                                autoClose={3000}
-                                theme="dark"/>
         </>
     )
 }
-

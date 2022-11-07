@@ -1,11 +1,12 @@
 import css from "../Header/Header.module.css"
 import { UserMenu } from "components/UserMenu/UserMenu"
 import { useState } from "react"
-import { RegistrationForm } from "components/RegistrationForm/RegistrationForm"
-import { LogInForm } from "components/LogInForm/LogInForm"
-import { Modal } from "components/Modal/Modal"
+// import { RegistrationForm } from "components/RegistrationForm/RegistrationForm"
+// import { LogInForm } from "components/LogInForm/LogInForm"
+// import { Modal } from "components/Modal/Modal"
 import { useSelector } from "react-redux"
-import userAuthSelectors from "redux/userAuth/userAuth-selectors"
+import userAuthSelectors from "redux/userAuth/userAuth-selectors";
+import { NavLink} from 'react-router-dom'
 
 export const Header = () => {
     const isLoggedIn = useSelector(userAuthSelectors.getIsLoggedIn)
@@ -24,16 +25,23 @@ export const Header = () => {
         <>
             <header className={css.phonebookHeader}>
                 <nav className={css.navigation}>
-                    <a className={css.title} href="/">Phonebook</a>
-                    <div className={css.buttons}>
-            {  !isLoggedIn ?  <><button onClick={toggleRegistration}>Register</button>
-                        <button onClick={toggleLogIn}>LogIn</button></>
-                        : <UserMenu/>}
-                    </div>
+                    <a className={css.title} href="/goit-react-hw-08-phonebook/">Phonebook</a>
+                    
+                        {!isLoggedIn
+                            ? <div className={css.buttons}>
+                            <NavLink to='/register'>
+                                <button onClick={toggleRegistration}>Register</button>
+                            </NavLink>
+                            <NavLink to='/login'>
+                                <button onClick={toggleLogIn}>LogIn</button>
+                            </NavLink>
+                            </div>
+                            : <UserMenu/>}
+                    
                 </nav>
             </header>
-            {isShowRegistration && <Modal onClose={toggleRegistration}><RegistrationForm/></Modal>}
-            {isShowLogIn && <Modal onClose={toggleLogIn}><LogInForm/></Modal>}
+            {/* {isShowRegistration && <Modal onClose={toggleRegistration}><RegistrationForm/></Modal>}
+            {isShowLogIn && <Modal onClose={toggleLogIn}><LogInForm/></Modal>} */}
         </>
     )
 }
