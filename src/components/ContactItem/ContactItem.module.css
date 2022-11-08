@@ -23,3 +23,13 @@
 .contactRemoveBtn:hover {
     transform: scale(1.1);
 }
+
+.contactUpdateBtn {
+    margin-top: 5px;
+    background: linear-gradient(to right, #07c817, #1919eac6);
+    border-radius: 4px;
+}
+
+.contactUpdateBtn:hover {
+    transform: scale(1.1);
+}

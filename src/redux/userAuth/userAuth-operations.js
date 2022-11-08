@@ -59,7 +59,7 @@ const getCurrentUser = createAsyncThunk('userAuth/refreshUser', async (_, thunkA
     token.set(tokenPersist)
     try {
         const {data } = await axios.get('/users/current');
-        toast.success("We found current user!")
+        // toast.success("We found current user!")
         return data;
     } catch (error) {
         toast.error(`${error.message}`);

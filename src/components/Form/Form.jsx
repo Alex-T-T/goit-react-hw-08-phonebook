@@ -9,7 +9,7 @@ import { ThreeDots } from  'react-loader-spinner'
 
 
 export const Form = () => {
-    const [name, setname] = useState('');
+    const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
     const { data } = useGetContactsQuery();
@@ -32,7 +32,7 @@ export const Form = () => {
         // console.log('event.currentTarget.name =>', event.currentTarget.name )
         switch (name) {
             case 'name':
-                setname(value);
+                setName(value);
                 break;
             
             case 'number':
@@ -63,7 +63,7 @@ export const Form = () => {
     }
 
     const reset = () => {
-        setname('');
+        setName('');
         setNumber('');
     }
 

@@ -46,7 +46,7 @@ const handleInputChange = (event) => {
     }
 
     return (
-        <>
+        <div className={css.container}>
             <form className={css.form}>
 
             <label> Email
@@ -73,6 +73,6 @@ const handleInputChange = (event) => {
 
             </form>
             {/* {result.isSuccess && <><div>{result.data.user.email }</div> <div>token{token}</div></>} */}
-        </>
+        </div>
     )
 }

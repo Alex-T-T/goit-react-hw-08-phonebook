@@ -1,25 +1,26 @@
 import css from "../Header/Header.module.css"
 import { UserMenu } from "components/UserMenu/UserMenu"
-import { useState } from "react"
+// import { useState } from "react"
 // import { RegistrationForm } from "components/RegistrationForm/RegistrationForm"
 // import { LogInForm } from "components/LogInForm/LogInForm"
 // import { Modal } from "components/Modal/Modal"
 import { useSelector } from "react-redux"
 import userAuthSelectors from "redux/userAuth/userAuth-selectors";
-import { NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+
 
 export const Header = () => {
     const isLoggedIn = useSelector(userAuthSelectors.getIsLoggedIn)
-    const [isShowRegistration, setIsShowRegistration] = useState(false);
-    const [isShowLogIn, setIsShowLogIn] = useState(false);
+    // const [isShowRegistration, setIsShowRegistration] = useState(false);
+    // const [isShowLogIn, setIsShowLogIn] = useState(false);
 
-    const toggleRegistration = () => {
-        setIsShowRegistration(!isShowRegistration)
-    }
+    // const toggleRegistration = () => {
+    //     setIsShowRegistration(!isShowRegistration)
+    // }
 
-    const toggleLogIn = () => {
-        setIsShowLogIn(!isShowLogIn)
-    }
+    // const toggleLogIn = () => {
+    //     setIsShowLogIn(!isShowLogIn)
+    // }
     
     return (
         <>
@@ -30,10 +31,14 @@ export const Header = () => {
                         {!isLoggedIn
                             ? <div className={css.buttons}>
                             <NavLink to='/register'>
-                                <button onClick={toggleRegistration}>Register</button>
+                                {/* <button onClick={toggleRegistration}>Register</button> */}
+                                <button>Register</button>
+
                             </NavLink>
                             <NavLink to='/login'>
-                                <button onClick={toggleLogIn}>LogIn</button>
+                                {/* <button onClick={toggleLogIn}>LogIn</button> */}
+                                <button>LogIn</button>
+
                             </NavLink>
                             </div>
                             : <UserMenu/>}

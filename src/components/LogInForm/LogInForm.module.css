@@ -1,9 +1,23 @@
-
+.container {
+    padding: 30px;
+    /* background-image: url('../../img/downloading.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%; */
+    border-radius: 4px;
+}
 
 .form {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
     width: 500px;
+    border-radius: 4px;
+    /* color: blanchedalmond; */
+/* background-image: linear-gradient(109.6deg, rgba(61, 245, 167, 1) 11.2%, rgba(9, 111, 224, 1) 91.1%); */
 }
 .loginBtn {
+    margin-top: 10px;
     background: linear-gradient(to right, #52c234, #061700);
         border-radius: 4px;
 }
