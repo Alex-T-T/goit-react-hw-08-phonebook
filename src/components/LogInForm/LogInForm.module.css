@@ -1,5 +1,9 @@
-.container {
-    padding: 30px;
+.loginContainer {
+    padding-right: 30px;
+    padding-left: 30px;
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
     /* background-image: url('../../img/downloading.jpeg');
     background-repeat: no-repeat;
     background-position: center;
@@ -7,7 +11,10 @@
     border-radius: 4px;
 }
 
-.form {
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
@@ -16,6 +23,14 @@
     /* color: blanchedalmond; */
 /* background-image: linear-gradient(109.6deg, rgba(61, 245, 167, 1) 11.2%, rgba(9, 111, 224, 1) 91.1%); */
 }
+
+.loginLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .loginBtn {
     margin-top: 10px;
     background: linear-gradient(to right, #52c234, #061700);
@@ -24,4 +39,8 @@
 
 .loginBtn:hover {
     transform: scale(1.1);
+}
+
+.loginImg {
+    width: 300px;
 }

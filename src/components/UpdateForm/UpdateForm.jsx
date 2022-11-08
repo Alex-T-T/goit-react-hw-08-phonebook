@@ -1,6 +1,6 @@
 import css from "../UpdateForm/UpdateForm.module.css"
 import { useState, useEffect } from "react";
-import { useUpdateContactMutation } from "../../redux/contactsSlice";
+import { useUpdateContactMutation} from "../../redux/contactsSlice";
 // import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { ThreeDots } from  'react-loader-spinner'
@@ -9,6 +9,7 @@ import { ThreeDots } from  'react-loader-spinner'
 export const UpdateForm = ({id, onClose}) => {
     // const dispatch = useDispatch();
     const [updateContact, updateContactResult] = useUpdateContactMutation(); 
+    // const { data } = useGetContactsQuery();
 
     // const navigate = useNavigate();
     const [name, setName] = useState('');
@@ -22,8 +23,9 @@ export const UpdateForm = ({id, onClose}) => {
     }, [updateContactResult.isError]); 
 
     useEffect(() => {
+        // console.log(updateContactResult)
         updateContactResult.isSuccess && toast.success("Contact successfully updated")
-    }, [updateContactResult.isSuccess]);
+    }, [ updateContactResult.isSuccess]);
 
 const handleInputChange = (event) => {
         const { name, value } = event.currentTarget

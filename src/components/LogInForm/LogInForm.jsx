@@ -2,7 +2,9 @@ import css from "../LogInForm/LogInForm.module.css"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import userAuthOperations from "redux/userAuth/userAuth-operations";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import downloading from '../../img/downloading.jpeg';
+
 // import { toast } from "react-toastify";
 // import { useLoginUserMutation } from "redux/userSlice";
 
@@ -46,10 +48,10 @@ const handleInputChange = (event) => {
     }
 
     return (
-        <div className={css.container}>
-            <form className={css.form}>
+        <div className={css.loginContainer}>
+            <form className={css.loginForm}>
 
-            <label> Email
+            <label className={css.loginLabel}> Email
                 <input type="email"
                         name="email"
                         value={email}
@@ -58,7 +60,7 @@ const handleInputChange = (event) => {
                     />
             </label>
 
-            <label> Password
+            <label className={css.loginLabel}> Password
                     <input type="password"
                             name="password"
                             value={password}
@@ -72,6 +74,7 @@ const handleInputChange = (event) => {
                     </button>
 
             </form>
+             <img className={css.loginImg} src={downloading} alt='yellow pages'/>
             {/* {result.isSuccess && <><div>{result.data.user.email }</div> <div>token{token}</div></>} */}
         </div>
     )

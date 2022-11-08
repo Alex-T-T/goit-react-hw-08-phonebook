@@ -5,7 +5,7 @@ import { auditName } from 'utils/auditName';
 import { auditNumber } from 'utils/auditNumber';
 import { toast } from 'react-toastify';
 import { ThreeDots } from  'react-loader-spinner'
-
+// import yellowPages from '../../img/yellow-pages.png'
 
 
 export const Form = () => {
@@ -96,7 +96,7 @@ export const Form = () => {
 
                 <button className={css.addBtn} type='submit' disabled={result.isLoading}> {btnText} </button>
             </form>
-
+            {/* <img src={yellowPages} alt='yellow pages'/> */}
         </>
     )
 }

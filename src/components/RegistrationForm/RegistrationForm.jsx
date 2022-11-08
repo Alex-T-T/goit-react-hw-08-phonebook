@@ -2,7 +2,9 @@ import { useState } from "react";
 import css from "../RegistrationForm/RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import userAuthOperations from '../../redux/userAuth/userAuth-operations';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import wellcome from '../../img/wellcome.jpeg';
+
 
 export const RegistrationForm = () => {
     const dispatch = useDispatch();
@@ -48,7 +50,7 @@ export const RegistrationForm = () => {
     }
 
 
-    return (<>
+    return (<div className={ css.registrationContainer}>
         <form className={css.registrationForm}>
             <label className={css.registrationLabel}> Name
                 <input type="text"
@@ -84,7 +86,10 @@ export const RegistrationForm = () => {
             <button className={css.registrationBtn} type="submit" onClick={handleInputSubmit}>Register</button>
 
         </form>
+        
+        <img className={css.registrationImg} src={wellcome} alt='yellow pages' />
+        
         {/* {result.data.user.name && <p>${ result.data.user.name}</p>} */}
-        </>
+        </div>
     )
 }
