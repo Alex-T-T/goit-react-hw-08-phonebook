@@ -1,4 +1,26 @@
-.form {
+.registrationForm {
     width: 500px;
-    background-color: darkcyan
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.registrationLabel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.registrationBtn {
+    margin-top: 10px;
+    background: linear-gradient(to right, #52c234, #061700);
+    border-radius: 4px;
+}
+
+.registrationBtn:hover {
+    transform: scale(1.1);
 }

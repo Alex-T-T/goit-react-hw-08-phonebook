@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate } from "react-router-dom";
 import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 import { LogInForm } from './LogInForm/LogInForm';
-import { Contacts } from 'Contacts/Contacts';
+import { Contacts } from 'components/Contacts/Contacts';
 import PrivateRoute from '../Routes/PrivateRoute';
 import PublicRoute from 'Routes/PublicRoute';
 

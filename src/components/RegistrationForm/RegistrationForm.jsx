@@ -49,8 +49,8 @@ export const RegistrationForm = () => {
 
 
     return (<>
-        <form className={css.form}>
-            <label> Name
+        <form className={css.registrationForm}>
+            <label className={css.registrationLabel}> Name
                 <input type="text"
                         name="name"
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -61,7 +61,7 @@ export const RegistrationForm = () => {
                         />
             </label>
 
-            <label> Email
+            <label className={css.registrationLabel}> Email
                 <input type="email"
                     name="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -71,7 +71,7 @@ export const RegistrationForm = () => {
                     />
             </label>
 
-            <label> Password
+            <label className={css.registrationLabel}> Password
                 <input type="password"
                     name="password"
                     // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$"
@@ -81,7 +81,7 @@ export const RegistrationForm = () => {
                     />
             </label>
 
-            <button type="submit" onClick={handleInputSubmit}>Register</button>
+            <button className={css.registrationBtn} type="submit" onClick={handleInputSubmit}>Register</button>
 
         </form>
         {/* {result.data.user.name && <p>${ result.data.user.name}</p>} */}
