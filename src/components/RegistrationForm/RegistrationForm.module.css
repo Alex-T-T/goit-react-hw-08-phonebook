@@ -23,6 +23,7 @@
 
 .registrationBtn {
     margin-top: 10px;
+    margin-bottom: 10px;
     background: linear-gradient(to right, #52c234, #061700);
     border-radius: 4px;
 }
@@ -33,4 +34,17 @@
 
 .registrationImg {
     width: 400px;
+}
+
+.inbox {
+    vertical-align: middle;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link:hover .inbox {
+    transform: scale(1.2);
 }

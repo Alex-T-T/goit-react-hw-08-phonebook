@@ -3,6 +3,7 @@ import css from "../RegistrationForm/RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import userAuthOperations from '../../redux/userAuth/userAuth-operations';
 import wellcome from '../../img/wellcome.jpeg';
+import { RiLoginBoxLine } from "react-icons/ri";
 
 
 export const RegistrationForm = () => {
@@ -74,7 +75,8 @@ export const RegistrationForm = () => {
             </label>
 
             <button className={css.registrationBtn} type="submit" onClick={handleInputSubmit}>Register</button>
-
+            <p className={css.text}>Are you already registered?</p>
+            <a className={css.link} href="/goit-react-hw-08-phonebook/login"><p className={css.text}>Clic here <RiLoginBoxLine className={css.inbox}/></p></a>
         </form>
         
         <img className={css.registrationImg} src={wellcome} alt='yellow pages' />

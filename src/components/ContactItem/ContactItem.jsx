@@ -80,7 +80,7 @@ export const ContactItem = ({ id, name, number }) => {
                     type="button"
                     disabled={removeContactResult.isLoading}> Remove </button>
             </li>
-            {isShowUpdate && <Modal onClose={toggleUpdateForm}><UpdateForm id={id} onClose={ toggleUpdateForm} /></Modal>}
+            {isShowUpdate && <Modal onClose={toggleUpdateForm}><UpdateForm id={id} currentName={name} currentNumber={ number} onClose={ toggleUpdateForm} /></Modal>}
             
         </>
     )
