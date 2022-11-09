@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import userAuthOperations from "redux/userAuth/userAuth-operations";
 import downloading from '../../img/downloading.jpeg';
+import {RiLoginBoxLine} from 'react-icons/ri'
 
 export const LogInForm = () => {
     const dispatch = useDispatch();
@@ -57,7 +58,8 @@ const handleInputChange = (event) => {
                         onClick={handleInputSubmit}>
                         Login
                     </button>
-
+                <p className={css.text}>Are you not registered yet?</p>
+                <a className={css.link} href="/goit-react-hw-08-phonebook/register"><p className={css.text}>Clic here <RiLoginBoxLine className={css.inbox}/></p></a>
             </form>
              <img className={css.loginImg} src={downloading} alt='yellow pages'/>
         </div>

@@ -7,6 +7,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 import { LogInForm } from './LogInForm/LogInForm';
 import { Contacts } from 'components/Contacts/Contacts';
+import { HomePage } from './HomePage/HomePage';
 import PrivateRoute from '../Routes/PrivateRoute';
 import PublicRoute from 'Routes/PublicRoute';
 
@@ -21,7 +22,8 @@ export const App = () => {
         return(
             <>
                 <Routes>
-                    <Route path='/' element={<Layout/>}>
+                    <Route path='/' element={<Layout />}>
+                        <Route index element={<HomePage/>}/>
 
                         <Route element={<PublicRoute/>}>
                             <Route path='register' element={<RegistrationForm />} />
