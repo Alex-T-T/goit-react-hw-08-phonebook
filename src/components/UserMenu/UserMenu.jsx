@@ -16,7 +16,9 @@ export const UserMenu = () => {
 
     return (
         <div>
-            <p>{ email}</p>
+            <p>Wellcome</p>
+            <p>{email}</p>
+            
             <button className={css.logOutBtn} onClick = { logout}>Logout</button>
         </div>
     )

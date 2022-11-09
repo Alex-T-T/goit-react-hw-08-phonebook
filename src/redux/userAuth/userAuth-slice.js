@@ -13,7 +13,7 @@ const userAuthApiSlice = createSlice({
     name: 'userAuth',
     initialState,
     extraReducers: {
-        [userAuthOperations.userRegistration.fulfilled](state, action) {
+        [userAuthOperations.userRegistration.fulfilled]:(state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
@@ -23,6 +23,18 @@ const userAuthApiSlice = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
+        },
+
+        [userAuthOperations.userLogin.rejected]: (state) => {
+            state.user = { name: null, email: null };
+            state.token = null;
+            state.isLoggedIn = false;
+        },
+
+        [userAuthOperations.userLogin.pending]: (state, action) => {
+            state.user = { name: null, email: null };
+            state.token = null;
+            state.isLoggedIn = false;
         },
 
         [userAuthOperations.userLogout.fulfilled]: (state) => {

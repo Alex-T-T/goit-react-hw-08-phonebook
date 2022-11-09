@@ -1,15 +1,17 @@
 import css from "../UpdateForm/UpdateForm.module.css"
 import { useState, useEffect } from "react";
-import { useUpdateContactMutation} from "../../redux/contactsSlice";
+import { useUpdateContactMutation, useGetContactsQuery} from "../../redux/contactsSlice";
 // import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { ThreeDots } from  'react-loader-spinner'
+import { ThreeDots } from 'react-loader-spinner';
+import { auditName } from 'utils/auditName';
+import { auditNumber } from 'utils/auditNumber';
 
 
 export const UpdateForm = ({id, onClose}) => {
     // const dispatch = useDispatch();
     const [updateContact, updateContactResult] = useUpdateContactMutation(); 
-    // const { data } = useGetContactsQuery();
+    const { data } = useGetContactsQuery();
 
     // const navigate = useNavigate();
     const [name, setName] = useState('');
@@ -17,15 +19,15 @@ export const UpdateForm = ({id, onClose}) => {
 
     const btnText =  updateContactResult.isLoading ? <ThreeDots  color="white" height="15" width="60"/> : 'Update' 
 
-
+    useEffect(() => {
+        updateContactResult.isSuccess && toast.success("Contact successfully updated")
+    }, [updateContactResult.isSuccess]);
+    
     useEffect(() => {
         updateContactResult.isError && toast.error("error on update Contact")
     }, [updateContactResult.isError]); 
 
-    useEffect(() => {
-        // console.log(updateContactResult)
-        updateContactResult.isSuccess && toast.success("Contact successfully updated")
-    }, [ updateContactResult.isSuccess]);
+
 
 const handleInputChange = (event) => {
         const { name, value } = event.currentTarget
@@ -47,6 +49,16 @@ const handleInputChange = (event) => {
 
     function handleInputSubmit  (event) {
         event.preventDefault();
+
+        if (auditName(data, name)) {
+            toast.error (`${name} is already in contacts.`);
+            return 
+        };
+
+        if (auditNumber(data, number)) {
+            toast.error (`${number} is already in contacts.`);
+            return 
+        };
         updateContact({id, name, number});
         reset();
         onClose();

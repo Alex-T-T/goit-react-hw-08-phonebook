@@ -31,7 +31,7 @@ const userLogin = createAsyncThunk('userAuth/login', async credentials => {
         token.set(data.token);
         return data;
     } catch (error) {
-        toast.error(`${error.message}`);
+        toast.error(`Uncorrect login or password!`);
     }
 })
 
