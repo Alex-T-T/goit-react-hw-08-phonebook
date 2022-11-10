@@ -65,10 +65,10 @@ const handleInputChange = (event) => {
     }
 
     return (
-        <>
-            <form className={css.form}>
+        <div className={css.updateContainer}>
+            <form className={css.updateForm}>
 
-            <label> Name
+            <label className={css.updateLabel}> Name
                 <input type="text"
                         name="name"
                         // value={name}
@@ -80,7 +80,7 @@ const handleInputChange = (event) => {
                     />
             </label>
 
-            <label> Number
+            <label className={css.updateLabel}> Number
                     <input type="number"
                             name="number"
                         // value={number}
@@ -99,7 +99,7 @@ const handleInputChange = (event) => {
                     </button>
 
             </form>
-        </>
+        </div>
     )
 }
 
