@@ -1,3 +1,16 @@
+    @media screen and (max-width: 480px) {
+        .registrationContainer {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+        .registrationImg {
+            margin-top: 10px;
+        }
+    }
+
 .registrationContainer {
     display: flex;
     justify-content: space-evenly;

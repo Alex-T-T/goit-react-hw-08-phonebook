@@ -22,3 +22,12 @@
     text-decoration: none;
     color: inherit;
 }
+
+@media screen and (max-width: 480px) {
+    .homePageContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+}
