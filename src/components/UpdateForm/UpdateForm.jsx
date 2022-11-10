@@ -1,27 +1,19 @@
 import css from "../UpdateForm/UpdateForm.module.css"
 import { useState, useEffect } from "react";
-import { useUpdateContactMutation} from "../../redux/contactsSlice";
-// import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-import { ThreeDots } from 'react-loader-spinner';
-// import { auditName } from 'utils/auditName';
-// import { auditNumber } from 'utils/auditNumber';
+import PropTypes from 'prop-types'
 
+// import { useUpdateContactMutation} from "../../redux/contactsSlice";
+// import { toast } from 'react-toastify';
+// import { ThreeDots } from 'react-loader-spinner';
 
-export const UpdateForm = ({id, currentName, currentNumber, onClose}) => {
+export const UpdateForm = ({id, currentName, currentNumber, onClose, onUpdate}) => {
 
-    const [updateContact, updateContactResult] = useUpdateContactMutation(); 
+    // const [updateContact, updateContactResult] = useUpdateContactMutation(); 
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
-    const btnText =  updateContactResult.isLoading ? <ThreeDots  color="white" height="15" width="60"/> : 'Update' 
-
-    console.log("currentName =>", currentName)
-    console.log("name =>", name)
-
-    console.log("currentNumber =>", currentNumber)
-    console.log("number =>", number)
+    // const btnText =  updateContactResult.isLoading ? <ThreeDots  color="white" height="15" width="60"/> : 'Update' 
 
     useEffect(() => {
         name === '' && setName(currentName)
@@ -33,15 +25,13 @@ export const UpdateForm = ({id, currentName, currentNumber, onClose}) => {
     }, [currentNumber, number]);
 
 
-    useEffect(() => {
-        updateContactResult.isSuccess && toast.success("Contact successfully updated")
-    }, [updateContactResult.isSuccess]);
+    // useEffect(() => {
+    //     updateContactResult.isSuccess && toast.success("Contact successfully updated")
+    // }, [updateContactResult.isSuccess]);
     
-    useEffect(() => {
-        updateContactResult.isError && toast.error("error on update Contact")
-    }, [updateContactResult.isError]); 
-
-
+    // useEffect(() => {
+    //     updateContactResult.isError && toast.error("error on update Contact")
+    // }, [updateContactResult.isError]); 
 
 const handleInputChange = (event) => {
         const { name, value } = event.currentTarget
@@ -64,7 +54,7 @@ const handleInputChange = (event) => {
     function handleInputSubmit  (event) {
         event.preventDefault();
 
-        updateContact({id, name, number});
+        onUpdate({id, name, number});
         reset();
         onClose();
     }
@@ -103,11 +93,20 @@ const handleInputChange = (event) => {
             </label>
                     <button className={css.updateBtn}
                         type="submit"
-                        onClick={handleInputSubmit} disabled={updateContactResult.isLoading}>
-                        {btnText}
+                        // onClick={handleInputSubmit} disabled={updateContactResult.isLoading}>
+                        onClick={handleInputSubmit}>
+                        Update
                     </button>
 
             </form>
         </>
     )
+}
+
+UpdateForm.propTypes = {
+    id: PropTypes.string.isRequired,
+    currentName: PropTypes.string.isRequired,
+    currentNumber: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
 }

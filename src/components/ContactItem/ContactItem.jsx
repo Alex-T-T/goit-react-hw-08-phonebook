@@ -1,7 +1,7 @@
 import css from '../ContactItem/ContactItem.module.css';
 import React from 'react';
 import PropTypes from 'prop-types'
-import { useRemoveContactMutation } from 'redux/contactsSlice';
+import { useRemoveContactMutation, useUpdateContactMutation } from 'redux/contactsSlice';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
@@ -10,9 +10,17 @@ import { UpdateForm } from 'components/UpdateForm/UpdateForm';
 export const ContactItem = ({ id, name, number }) => {
     const [isShowUpdate, setIsShowUpdate] = useState(false);
     const [removeContact, removeContactResult] = useRemoveContactMutation();
-    // console.log("result DELETE => ", result)
+    const [updateContact, updateContactResult] = useUpdateContactMutation(); 
 
-    // const [updateContact, updateContactResult] = useUpdateContactMutation(); 
+    // const [_, updateContactResult] = useUpdateContactMutation(); 
+
+    // useEffect(() => {
+    //     updateContactResult.isSuccess && toast.success("Contact successfully updated")
+    // }, [updateContactResult.isSuccess]);
+    
+    // useEffect(() => {
+    //     updateContactResult.isError && toast.error("error on update Contact")
+    // }, [updateContactResult.isError]); 
 
     useEffect(() => {
         removeContactResult.isError && toast.error("error on remove Contact")
@@ -23,48 +31,17 @@ export const ContactItem = ({ id, name, number }) => {
     }, [removeContactResult.isSuccess]);
 
 
+    useEffect(() => {
+        updateContactResult.isSuccess && toast.success("Contact successfully updated")
+    }, [updateContactResult.isSuccess]);
+    
+    useEffect(() => {
+        updateContactResult.isError && toast.error("error on update Contact")
+    }, [updateContactResult.isError]); 
 
     const toggleUpdateForm = () => {
         setIsShowUpdate(!isShowUpdate)
     }
-
-    // const onUpdateContact = (id) => {
-
-    // }
-
-    // const handleInputChange = (event) => {
-    //     const { name, value } = event.currentTarget
-    //     // console.log('event.currentTarget.name =>', event.currentTarget.name )
-    //     switch (name) {
-            
-    //         case 'email':
-    //             setEmail(value);
-    //             break;
-            
-    //         case 'password':
-    //             setPassword(value);
-    //             break;
-            
-    //         default:
-    //             return;
-    //     }
-    // }
-
-    // function handleInputSubmit  (event) {
-    //     event.preventDefault();
-    //     const user = { email, password }
-    //     dispatch(userAuthOperations.userLogin(user))
-    //     reset();
-    //     navigate('/contacts');
-    // }
-
-    // const reset = () => {
-    //     setEmail('');
-    //     setPassword('');
-    // }
-
-
-
 
     return (
         <>
@@ -80,7 +57,7 @@ export const ContactItem = ({ id, name, number }) => {
                     type="button"
                     disabled={removeContactResult.isLoading}> Remove </button>
             </li>
-            {isShowUpdate && <Modal onClose={toggleUpdateForm}><UpdateForm id={id} currentName={name} currentNumber={ number} onClose={ toggleUpdateForm} /></Modal>}
+            {isShowUpdate && <Modal onClose={toggleUpdateForm}><UpdateForm id={id} currentName={name} currentNumber={number} onClose={toggleUpdateForm} onUpdate={ updateContact} /></Modal>}
             
         </>
     )
